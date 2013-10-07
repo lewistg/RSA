@@ -76,15 +76,22 @@ def main():
 		phiOfN = (p - 1)*(q - 1)
 		if getMultInv(e, phiOfN)[0]:
 			break
+	print "p: " + str(p)
+	print "q: " + str(q)
+
 	n = p * q
+	print "n: " + str(n)
 
 	multInv = getMultInv(e, phiOfN)
 	assert(multInv[0])
 	d = multInv[1]
+	print "d: " + str(d)
 
-	m = 245678
-	print m
-	print modExp(modExp(m, e, n), d, n)
+	m = long(raw_input("Message to encrypt: "))
+	print "Encrypted message: " + str(modExp(m, e, n))
+
+	msgToDecrypt = long(raw_input("Message to decrypt: "))
+	print modExp(msgToDecrypt, d, n)
 
 if __name__ == "__main__":
 	main()
